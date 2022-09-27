@@ -1,60 +1,34 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-int removeDuplicates(int arr[], int n)
-{
-    if (n == 0 || n == 1)
-        return n;
 
-   int temp[n];
-   int j = 0;
-   for (int i = 0; i < n - 1; i++)
-        if (arr[i] != arr[i + 1])
-            temp[j++] = arr[i];
-    temp[j++] = arr[n - 1];
 
-   for (int i = 0; i < j; i++)
-        arr[i] = temp[i];
-   return j;
+
+int main(){
+    bool visited[1001] = {false};
+    int arr[10];
+    bool f = true;
+    int new_arr[10];
+    int j=0;
+    for(int i=0; i<10; i++){
+        cin >> arr[i];
+        if(!visited[arr[i]]){
+            visited[arr[i]]=true;
+            new_arr[j] = arr[i];
+            j++;
+        }
+        else
+            f = false;
+    }
+    if(f){
+        cout << "Array already unique!" << endl;
+    }
+    else{
+        for(int i=0; i<j; i++){
+            cout << new_arr[i] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
 }
-int main()
-{
-    int arr[] = { 1, 2, 2, 3, 4, 4, 4, 5, 5 };
-    int n = sizeof(arr) / sizeof(arr[0]);
 
-   n = removeDuplicates(arr, n);
-
-   for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-
-   return 0;
-}
-#include <iostream>
-using namespace std;
-int removeDuplicates(int arr[], int n)
-{
-    if (n == 0 || n == 1)
-        return n;
-
-   int temp[n];
-   int j = 0;
-   for (int i = 0; i < n - 1; i++)
-        if (arr[i] != arr[i + 1])
-            temp[j++] = arr[i];
-    temp[j++] = arr[n - 1];
-
-   for (int i = 0; i < j; i++)
-        arr[i] = temp[i];
-   return j;
-}
-int main()
-{
-    int arr[] = { 1, 2, 2, 3, 4, 4, 4, 5, 5 };
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-   n = removeDuplicates(arr, n);
-
-   for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-
-   return 0;
-}
