@@ -1,23 +1,29 @@
 #include<iostream>
-#include<string.h>
 using namespace std;
 
-int main(){
-int a;
-char text[100],ch;
-cout<<" Enter your text: ";
-cin.getline(text,100);
-cout<<"skip number: ";
-cin>>a;
-for(int i=0;text[i]!='\0';i=i+2){
-
-    ch=text[i];
-    if(ch>='a'){
-        ch=ch+a;
-        text[i]=ch;
-
+string encode(string s, int j){
+    int l = s.size();
+    int cnt = 0;
+    for(int i=0; i<l; i++){
+        cnt++;
+        if(cnt==j){
+            if(i+1>=l) break;
+            s[i+1] += 2;
+            i++;
+            cnt = 0;
+        }
     }
+    return s;
 
 }
-cout<<"Encrypted info: " <<text;
+
+int main(){
+    string s = "I am a student";
+    int j  = 2;
+    cout << "INPUT :" << endl;
+    cout << "string : " << s << endl << "Skip = " << j << endl;
+    cout << "Encoded string : " << encode(s, j) << endl;
+
+
+    return 0;
 }
